@@ -1,0 +1,91 @@
+<main class="reversBodyMargin p-3 loginWrapper">
+    <div class="MenuWrapper p-3 card-item">
+        <div class="d-flex align-items-center justify-content-center">
+            <span class="logo-container">
+                <img [src]="logoUrl" class="logo" alt="logo">
+            </span>
+        </div>
+        <form [formGroup]="LoginSignUpForm" (submit)="doLoginSignUp()">
+            @if (IsRegister) {
+                <div class="">
+                    <span class="inputLabel">Full Name</span>
+                    <div class="input-group">
+                        <input type="text" formControlName="name" class="form-control" placeholder="Full Name">
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <span class="inputLabel">Phone</span>
+                    <div class="input-group">
+                        <input type="text" maxlength="12" formControlName="phone" class="form-control" placeholder="Phone">
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <span class="inputLabel">Email</span>
+                    <div class="input-group">
+                        <input type="email" formControlName="email" class="form-control" placeholder="example: abc@xyz.com">
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <span class="inputLabel">Password</span>
+                    <div class="input-group">
+                    <input type="password" formControlName="password" class="form-control" placeholder="Password">
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center pt-3 border-top mt-3">
+                    <span class="btn btn-light" (click)="generateForm(false)">Registered Already</span>
+                    <button type="submit" [ngClass]="{'disabled': !LoginSignUpForm.valid}" class="btn btn-secondary">Register</button>
+                </div>
+            }
+            @else {
+                <div class="">
+                    <span class="inputLabel">Email</span>
+                    <div class="input-group">
+                        <input type="email" formControlName="email" class="form-control" placeholder="example: abc@xyz.com">
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <span class="inputLabel">Password</span>
+                    <div class="input-group">
+                    <input type="password" formControlName="password" class="form-control" placeholder="Password">
+                    </div>
+                </div>
+                <div class="mt-3 d-flex justify-content-between align-items-center">
+                    <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#fwPwd">Forgot Password?</button>
+                    <div class="dropdown menu-btn" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="navbar-links dropdown-toggle" type="button">
+                          <i class="fa-solid fa-utensils"></i>
+                        </span>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                          <li class="dropdown-item" ariaCurrentWhenActive="page" [queryParams]="{ type: 'R' }" routerLink="/menu">Retail Order</li>
+                          <li class="dropdown-item" ariaCurrentWhenActive="page" [queryParams]="{ type: 'P' }" routerLink="/menu">Party Order</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center pt-3 border-top mt-3">
+                    <span class="btn btn-light" (click)="generateForm(true)">Register Now</span>
+                    <button type="submit" [ngClass]="{'disabled': !LoginSignUpForm.valid}" class="btn btn-secondary">Login</button>
+                </div>
+            }
+        </form>
+    </div>
+    <div class="modal fade" id="fwPwd" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Forgot your password?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body d-flex flex-column">
+                <span class="text-muted fs-5 mb-2">Please contact the restaurent team to reset your password.</span>
+                <div class="d-flex">
+                    <span class="inputLabel me-2 mb-0">Phone:</span>
+                    <span class="text-muted">{{ ClientPhone }}</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" aria-label="Close">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+</main>

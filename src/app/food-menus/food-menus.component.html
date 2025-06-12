@@ -1,0 +1,217 @@
+<main class="foodMenu commonContentHeight p-3 me-sm-3 mr-md-0 p-lg-5">
+    @if (MenuType == 'P') {
+        <span class="menu-header">Party Order</span>
+        <div class="alert alert-info" role="alert">
+            We are not accepting online party orders at the moment; however, you can still contact the kitchen for party order information..
+        </div>
+        <mat-tab-group>
+            <mat-tab label="Arabic">
+                @if (ArabicMenuList.length > 0) {
+                    <div class="mt-3 position-relative">
+                        <div class="row menuList px-0 mx-0" #ArabicCarousel>
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 pe-0 pw-1 pb-3" *ngFor="let item of ArabicMenuList">
+                                <div class="MenuWrapper card-item" (click)="selectItem(item)">
+                                    <div class="item-wrapper">
+                                        <img class="item-image" [src]="item.sizevar[0].image" alt="item-image">
+                                    </div>
+                                    <div class="item-name px-2 py-4">
+                                        <span class="d-block mb-2">{{ item.name }}</span>
+                                    </div>
+                                    <div class="price-banner">
+                                        <span>&#163; {{ item.sizevar[0].price }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="arrow left navButton" [disabled]="disableArabicPrev" mat-icon-button (click)="scroll('left', ArabicCarousel, ArabicMenuList[0].cusine)"><mat-icon>chevron_left</mat-icon></button>
+                        <button class="arrow right navButton" [disabled]="disableArabicNext" mat-icon-button (click)="scroll('right', ArabicCarousel, ArabicMenuList[0].cusine)"><mat-icon>chevron_right</mat-icon></button>
+                    </div>
+                }
+            </mat-tab>
+            <mat-tab label="Indian">
+                @if (IndianMenuList.length > 0) {
+                    <div class="mt-3 position-relative">
+                        <div class="row menuList px-0 mx-0" #IndianCarousel>
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 pe-0 pw-1 pb-3" *ngFor="let item of IndianMenuList">
+                                <div class="MenuWrapper card-item" (click)="selectItem(item)">
+                                    <div class="item-wrapper">
+                                        <img class="item-image" [src]="item.sizevar[0].image" alt="item-image">
+                                    </div>
+                                    <div class="item-name px-2 py-4">
+                                        <span class="d-block mb-2">{{ item.name }}</span>
+                                    </div>
+                                    <div class="price-banner">
+                                        <span>&#163; {{ item.sizevar[0].price }}</span>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <button class="arrow left navButton" [disabled]="disableIndianPrev" mat-icon-button (click)="scroll('left', IndianCarousel, IndianMenuList[0].cusine)"><mat-icon>chevron_left</mat-icon></button>
+                        <button class="arrow right navButton" [disabled]="disableIndianNext" mat-icon-button (click)="scroll('right', IndianCarousel, IndianMenuList[0].cusine)"><mat-icon>chevron_right</mat-icon></button>
+                    </div>
+                }
+            </mat-tab>
+        </mat-tab-group>
+    }
+    @else {
+        <span class="menu-header mb-3">Retail Order</span>
+        <div class="alert alert-info" role="alert">
+            At the moment, we're unable to process card payments through the app. However, we're happy to accept bank transfers upon delivery. Thank you for your understanding!
+        </div>
+        <mat-tab-group>
+            <mat-tab label="Arabic">
+                @if (ArabicMenuList.length > 0) {
+                    <div class="mt-3 position-relative">
+                        <div class="row menuList px-0 mx-0" #MandiCarousel>
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 pe-0 pw-1 pb-3" *ngFor="let item of ArabicMenuList">
+                                <div class="MenuWrapper card-item" (click)="selectItem(item)">
+                                    <div class="item-wrapper">
+                                        <img class="item-image" [src]="item.sizevar[0].image" alt="item-image">
+                                    </div>
+                                    <div class="item-name px-2 py-4">
+                                        <span class="d-block mb-2">{{ item.name }}</span>
+                                    </div>
+                                    <div class="price-banner">
+                                        <span>&#163; {{ item.sizevar[0].price }}</span>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <button class="arrow left navButton" [disabled]="disableArabicPrev" mat-icon-button (click)="scroll('left', MandiCarousel, ArabicMenuList[0].cusine)"><mat-icon>chevron_left</mat-icon></button>
+                        <button class="arrow right navButton" [disabled]="disableArabicNext" mat-icon-button (click)="scroll('right', MandiCarousel, ArabicMenuList[0].cusine)"><mat-icon>chevron_right</mat-icon></button>
+                    </div>
+                }
+            </mat-tab>
+            <mat-tab label="Biriyani">
+                @if (BrMenuList.length > 0) {
+                    <div class="mt-3 position-relative">
+                        <div class="row menuList px-0 mx-0" #BrCarousel>
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 pe-0 pw-1 pb-3" *ngFor="let item of BrMenuList">
+                                <div class="MenuWrapper card-item" (click)="selectItem(item)">
+                                    <div class="item-wrapper">
+                                        <img class="item-image" [src]="item.sizevar[0].image" alt="item-image">
+                                    </div>
+                                    <div class="item-name px-2 py-4">
+                                        <span class="d-block mb-2">{{ item.name }}</span>
+                                    </div>
+                                    <div class="price-banner">
+                                        <span>&#163; {{ item.sizevar[0].price }}</span>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <button class="arrow left navButton" [disabled]="disableBrPrev" mat-icon-button (click)="scroll('left', BrCarousel, BrMenuList[0].cusine)"><mat-icon>chevron_left</mat-icon></button>
+                        <button class="arrow right navButton" [disabled]="disableBrNext" mat-icon-button (click)="scroll('right', BrCarousel, BrMenuList[0].cusine)"><mat-icon>chevron_right</mat-icon></button>
+                    </div>
+                }
+            </mat-tab>
+            <mat-tab label="Curry">
+                @if (CurMenuList.length > 0) {
+                    <div class="mt-3 position-relative">
+                        <div class="row menuList px-0 mx-0" #CurCarousel>
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 pe-0 pw-1 pb-3" *ngFor="let item of CurMenuList">
+                                <div class="MenuWrapper card-item" (click)="selectItem(item)">
+                                    <div class="item-wrapper">
+                                        <img class="item-image" [src]="item.sizevar[0].image" alt="item-image">
+                                    </div>
+                                    <div class="item-name px-2 py-4">
+                                        <span class="d-block mb-2">{{ item.name }}</span>
+                                    </div>
+                                    <div class="price-banner">
+                                        <span>&#163; {{ item.sizevar[0].price }}</span>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <button class="arrow left navButton" [disabled]="disableCurPrev" mat-icon-button (click)="scroll('left', CurCarousel, CurMenuList[0].cusine)"><mat-icon>chevron_left</mat-icon></button>
+                        <button class="arrow right navButton" [disabled]="disableCurNext" mat-icon-button (click)="scroll('right', CurCarousel, CurMenuList[0].cusine)"><mat-icon>chevron_right</mat-icon></button>
+                    </div>
+                }
+            </mat-tab>
+            <mat-tab label="Addons">
+                @if (AddMenuList.length > 0) {
+                    <div class="mt-3 position-relative">
+                        <div class="row menuList px-0 mx-0" #AddCarousel>
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 pe-0 pw-1 pb-3" *ngFor="let item of AddMenuList">
+                                <div class="MenuWrapper card-item" (click)="selectItem(item)">
+                                    <div class="item-wrapper">
+                                        <img class="item-image" [src]="item.sizevar[0].image" alt="item-image">
+                                    </div>
+                                    <div class="item-name px-2 py-4">
+                                        <span class="d-block mb-2">{{ item.name }}</span>
+                                    </div>
+                                    <div class="price-banner">
+                                        <span>&#163; {{ item.sizevar[0].price }}</span>
+                                    </div>
+                                </div>
+                            </div>    
+                        </div>
+                        <button class="arrow left navButton" [disabled]="disableAddPrev" mat-icon-button (click)="scroll('left', AddCarousel, AddMenuList[0].cusine)"><mat-icon>chevron_left</mat-icon></button>
+                        <button class="arrow right navButton" [disabled]="disableAddNext" mat-icon-button (click)="scroll('right', AddCarousel, AddMenuList[0].cusine)"><mat-icon>chevron_right</mat-icon></button>
+                    </div>
+                }
+            </mat-tab>
+        </mat-tab-group>
+    }
+
+    @if (SelectedItem) {
+        <div class="modal fade" id="selectedItemModel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">{{ SelectedItem.name }}</h5>
+                  <button type="button" class="btn-close" (click)="cancelItem()"></button>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <div class="pe-0 pw-1 pb-3">
+                            <div class="MenuWrapper" >
+                                <div class="item-wrapper">
+                                    <img class="item-image" [src]="SelectedItem.sizevar.length > 1 ? SelectedSizeItemToDisplay.image : SelectedItem.sizevar[0].image" alt="item-image">
+                                </div>
+                                <div class="item-name px-2 py-3">
+                                    <span class="d-block">{{ SelectedItem.sizevar.length > 1 ? SelectedSizeItemToDisplay.name : SelectedItem.name }}</span>
+                                </div>
+                                <div class="price-banner">
+                                    <span>&#163; {{ SelectedItem.sizevar.length > 1 ? SelectedSizeItemToDisplay.price : SelectedItem.sizevar[0].price }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3 d-flex align-items-center">
+                            <span class="fw-bold">Quantity:</span>
+                            <input type="number" value="1" id="itemQuantity" class="form-control w-25 ms-2">
+                        </div>
+                        <div class="item-name px-3 mt-3 d-flex justify-content-around align-items-center" *ngIf="SelectedItem.sizevar.length == 2">
+                            <button class="sizeVarBtn" [ngClass]="{ 'active': SelectedSize == 'H' }" (click)="selectSize('H', 0)">Half</button>
+                            <button class="sizeVarBtn" [ngClass]="{ 'active': SelectedSize == 'F' }" (click)="selectSize('F', 1)">Full</button>
+                        </div>
+                        <div class="item-name px-3 d-flex justify-content-between align-items-center" *ngIf="SelectedItem.sizevar.length == 3">
+                            <button class="sizeVarBtn" [ngClass]="{ 'active': SelectedSize == 'Q' }" (click)="selectSize('Q', 0)">Quater</button>
+                            <button class="sizeVarBtn" [ngClass]="{ 'active': SelectedSize == 'H' }" (click)="selectSize('H', 1)">Half</button>
+                            <button class="sizeVarBtn" [ngClass]="{ 'active': SelectedSize == 'F' }" (click)="selectSize('F', 2)">Full</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" (click)="cancelItem()">Cancel</button>
+                  <button type="button" class="btn btn-primary" (click)="addItem()">Add to cart</button>
+                </div>
+              </div>
+            </div>
+        </div>
+    }
+</main>
+
+@if (UserCart.length > 0) {
+    <div class="cart-alert-main">
+        <div class="cart-alert d-flex justify-content-between align-items-center">
+            <div class="cart-alert-item d-flex align-items-center">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="ms-3">{{ UserCart.length }} {{ UserCart.length == 1 ? 'Item' : 'Items' }} Added</span>
+            </div>
+            <div class="card-button">
+                <button type="button" class="btn btn-outline-light" (click)="viewCart()">view</button>
+            </div>
+        </div>
+    </div>
+}

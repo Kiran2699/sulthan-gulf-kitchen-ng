@@ -1,0 +1,35 @@
+.landingPage {
+    margin-top: 70px;
+
+    .bannerWrapper {
+        background-image: var(--banner-url);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: 75%;
+        overflow: hidden;
+        position: relative;
+
+        .bannerContent {
+            color: #EFEFEF;
+            font-weight: 700;
+            font-size: 1.6rem;
+            z-index: 2;
+            position: absolute;
+            bottom: 4%;
+            left: 20%;
+            transform: translate(-20%, -20%);
+
+            .mainText {
+                font-size: 3rem;
+                display: block;
+            }
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            z-index: 1;
+        }
+    }
+}

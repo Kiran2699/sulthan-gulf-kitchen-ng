@@ -1,0 +1,97 @@
+<main class="foodMenu commonContentHeight p-3 me-sm-3 mr-md-0 p-lg-5">
+    <div class="card food-card">
+        <div class="card-header d-flex align-items-center">
+            <span class="fs-6 fw-bolder text-muted">Your Cart</span>
+          </div>
+          @if (CartArr.length > 0) {
+            <div class="cart-container">
+                @for (item of CartArr; track $index) {
+                    <div class="cart-item position-relative d-flex justify-content-between align-items-center p-3 border-bottom">
+                        <div class="item-details d-flex align-items-center">
+                            <img [src]="item.image" class="cart-item-image" alt="cart-item-image">
+                            <div class="d-flex flex-column ms-3">
+                                <span class="inputLabel mb-2">{{ item.name }}</span>
+                                <span class="inputLabel">{{ item.quantity }}</span>
+                            </div>
+                        </div>
+                        <div class="item-price d-flex align-items-center">
+                            <span class="inputLabel me-3">{{item.price}}</span>
+                            <button (click)="removeItem($index)" type="button" class="btn btn-danger deleteBtn"><i class="fa-solid fa-trash"></i></button>
+                        </div>
+                    </div>
+                }
+                <div class="cart-item position-relative d-flex justify-content-end align-items-center p-3 border-bottom">
+                    <span class="inputLabel">Delivery: </span> &nbsp; &nbsp;
+                    <span class="inputLabel text-danger">{{ DeliveryFee }}</span>
+                </div>
+                <div class="cart-item position-relative d-flex justify-content-end align-items-center p-3 border-bottom">
+                    <span class="inputLabel">Total: </span> &nbsp; &nbsp;
+                    <span class="inputLabel text-danger">{{ TotalPrice }}</span>
+                </div>
+                <form [formGroup]="OrderDetailForm">
+                    <div class="cart-item position-relative border-bottom p-3">
+                        <mat-label class="inputLabel mb-2">Delivery Option</mat-label>
+                        <select formControlName="deliveryOption" class="form-select text-capitalize">
+                            <option *ngFor="let option of DeliveryOptions" [value]="option.value">
+                                {{ option.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="cart-item position-relative border-bottom p-3">
+                        <mat-label class="inputLabel mb-2">Payment Option</mat-label>
+                        <select formControlName="paymentOption" class="form-select text-capitalize">
+                            <option *ngFor="let option of PaymentOptions" [value]="option.value">
+                                {{ option.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="cart-item position-relative p-3 border-bottom">
+                        <div class="">
+                            <span class="inputLabel mb-2">House Number</span>
+                            <div class="">
+                                <input type="text" formControlName="houseNo" maxlength="4" class="form-control" placeholder="e.g. 107">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-item position-relative p-3 border-bottom">
+                        <mat-label class="inputLabel mb-2">Select nearest Location</mat-label>
+                        <mat-form-field appearance="outline" class="w-80">
+                            <input
+                              type="text"
+                              matInput
+                              formControlName="location"
+                              [matAutocomplete]="auto"
+                              placeholder="e.g. Wembley stadium"
+                            >
+                            <mat-autocomplete #auto="matAutocomplete">
+                              <mat-option *ngFor="let postcode of Postcodes" [value]="postcode">
+                                {{ postcode }}
+                              </mat-option>
+                            </mat-autocomplete>
+                            <mat-hint>(Only locations from this list is available for delivery)</mat-hint>
+                          </mat-form-field>
+                    </div>
+                    <div class="cart-item position-relative p-3 border-bottom">
+                        <div class="">
+                            <span class="inputLabel mb-2">Postcode</span>
+                            <div class="">
+                                <input type="text" formControlName="postcode" maxlength="10" class="form-control" placeholder="e.g. HA9 0WS">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cart-item position-relative d-flex justify-content-end align-items-center p-3">
+                        <button class="btn btn-app-primary" (click)="onOrder()">Order Now</button>
+                    </div>
+                </form>
+              </div>
+          }
+          @else {
+            <div class="cart-container">
+                <a href="/menu"class="sideMenuLinks d-block text-danger fs-4 text-decoration-none text-center mt-5" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="">
+                    <i class="fa-solid fa-user-clock"></i>&nbsp;
+                    <span>No items in the cart. Go to menu</span>
+                  </a>
+            </div>
+          }
+    </div>
+</main>

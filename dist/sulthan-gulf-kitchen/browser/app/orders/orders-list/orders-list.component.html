@@ -1,0 +1,60 @@
+<main class="stocksDet commonContentHeight">
+    <div class="card my-3 stocksCard food-card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span class="fs-6 fw-bolder text-muted">Orders List</span>
+        </div>
+        @if (IsEditMode) {
+            <div>
+                <app-order-actions (IsOrderModified)="IsEditMode = false"></app-order-actions>
+            </div>
+        }
+        @else {
+            <div class="card-body">
+                <div class="overflow-auto">
+                    <table class="table table-bordered table-striped table-responsive table-hover admin-table">
+                        <thead>
+                            <tr>
+                            <th>ID</th>
+                            <th>Date</th>
+                            <th>Customer Name</th>
+                            <th>Status</th>
+                            <th>Number of Items</th>
+                            <th>Total Price</th>
+                            <th>Amount Paid</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for (order of UserOrders; track $index) {
+                            <tr (click)="selectOrderItem($index)">
+                                <td>{{ order.orderId }}</td>
+                                <td>{{ order.orderDate }}</td>
+                                <td>{{ order.name }}</td>
+                                @switch (order.status) {
+                                    @case ('Pending Confirmation') {
+                                        <td class="text-danger fw-bold">{{ order.status }}</td>
+                                    }
+                                    @case ('Preparing your order') {
+                                        <td class="text-info fw-bold">{{ order.status }}</td>
+                                    }
+                                    @case ('Order is on the way') {
+                                        <td class="text-primary fw-primary">{{ order.status }}</td>
+                                    }
+                                    @case ('Order cancelled') {
+                                        <td class="text-danger fw-bold">{{ order.status }}</td>
+                                    }
+                                    @default {
+                                        <td class="text-success fw-primary">{{ order.status }}</td>
+                                    }
+                                }
+                                <td>{{ order.order.length }}</td>
+                                <td>{{ order.totalPrice }}</td>
+                                <td>{{ !order.totalPricePaid || order.totalPricePaid == '' ? '0' : order.totalPricePaid }}</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        }
+      </div>
+</main>

@@ -1,0 +1,228 @@
+{
+    "Arabic": [],
+    "Indian": [],
+    "Mandi": [
+        {
+            "name": "Lamb mandi",
+            "sizeVarient": [
+                {
+                    "price": "10.99",
+                    "image": "arabic/lamb-mandi.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "chicken mandi",
+            "sizeVarient": [
+                {
+                    "price": "18.99",
+                    "image": "arabic/full-chicken-mandi.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "white rice",
+            "sizeVarient": [
+                {
+                    "price": "3.99",
+                    "image": "indian/white-rice.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        }
+    ],
+    "Biriyani": [
+        {
+            "name": "chicken-biriyani",
+            "price": "12.99",
+            "url": "assets/Images/menu/biriyani/half-chicken-briyani.svg",
+            "sizeVarient": [
+                {
+                    "price": "12.99",
+                    "image": "biriyani/half-chicken-briyani.svg",
+                    "description": "",
+                    "serves": "1"
+                },
+                {
+                    "price": "18.99",
+                    "image": "biriyani/full-chicken-briyani.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "Mutton biriyani",
+            "sizeVarient": [
+                {
+                    "price": "7.99",
+                    "image": "biriyani/mutton-briyani.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "lamb biriyani",
+            "sizeVarient": [
+                {
+                    "price": "9.49",
+                    "image": "biriyani/half-lamb-briyani.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "Fish biriyani",
+            "sizeVarient": [
+                {
+                    "price": "8.99",
+                    "image": "indian/fish-biriyani.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "prawn-biriyani",
+            "sizeVarient": [
+                {
+                    "price": "8.99",
+                    "image": "indian/prawn-biriyani.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        }
+    ],
+    "Curry": [
+        {
+            "name": "chicken curry",
+            "sizeVarient": [
+                {
+                    "price": "6.99",
+                    "image": "curry/chicken-curry.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "lamb curry",
+            "sizeVarient": [
+                {
+                    "price": "7.49",
+                    "image": "curry/lamb-curry.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "mutton curry",
+            "sizeVarient": [
+                {
+                    "price": "7.49",
+                    "image": "curry/mutton-curry.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "prawn curry",
+            "price": "7.49",
+            "url": "assets/Images/menu/curry/prawn-curry.svg",
+            "sizeVarient": [
+                {
+                    "price": "7.49",
+                    "image": "curry/prawn-curry.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        }
+    ],
+    "Addons": [
+        {
+            "name": "chicken shawarma",
+            "sizeVarient": [
+                {
+                    "price": "6.99",
+                    "image": "addons/chicken-shawarma.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "lamb shawarma",
+            "sizeVarient": [
+                {
+                    "price": "7.99",
+                    "image": "addons/lamb-shawarma.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "naan",
+            "sizeVarient": [
+                {
+                    "price": "1.49",
+                    "image": "addons/naan.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "grilled chicken",
+            "price": "8.99",
+            "url": "assets/Images/menu/addons/half-grill-chicken.svg",
+            "sizeVarient": [
+                {
+                    "price": "8.99",
+                    "image": "addons/half-grill-chicken.svg",
+                    "description": "",
+                    "serves": "1"
+                },
+                {
+                    "price": "12.99",
+                    "image": "addons/full-grill-chicken.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "grilled fish",
+            "sizeVarient": [
+                {
+                    "price": "9.99",
+                    "image": "addons/grilled-fish.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "grilled prawn",
+            "sizeVarient": [
+                {
+                    "price": "9.99",
+                    "image": "addons/grilled-prawn.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        }
+    ]
+}

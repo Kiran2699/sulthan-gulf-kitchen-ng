@@ -1,0 +1,29 @@
+.loader-spinner {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff8a;
+    z-index: 9999;
+}
+
+::ng-deep .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic{
+    stroke: var(--site-active-color)!important;
+}
+
+.app-main-alert {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+    min-width: 200px;
+    max-width: 100%;
+
+    @media (max-width: 600px) {
+        min-width: calc(100% - 40px);
+    }
+}

@@ -1,0 +1,152 @@
+@if (!_mainService.IsMobile) {
+  <nav class="custom-nav">
+    <div class="h-100 w-100 px-4">
+      <div class="h-100 w-100 d-flex align-items-center justify-content-between">
+        <div class="logo-wrapper">
+            <span class="logo-container">
+                <img [src]="logoUrl" routerLink="/home" class="logo" alt="logo">
+            </span>
+        </div>
+        <div class="d-flex align-items-center">
+            @if (!_authService.IsAdmin) {
+              <a class="navbar-links" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/home">
+                <i class="fa-solid fa-house"></i>&nbsp;
+                <span>Home</span>
+              </a>
+              <div class="dropdown">
+                <span class="navbar-links dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-solid fa-utensils"></i>&nbsp;
+                  <span>Menu</span>
+                </span>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <li class="dropdown-item" ariaCurrentWhenActive="page" [queryParams]="{ type: 'R' }" routerLink="/menu">Retail Order</li>
+                  <!-- <li class="dropdown-item" ariaCurrentWhenActive="page" [queryParams]="{ type: 'P' }" routerLink="/menu">Party Order</li> -->
+                </ul>
+              </div>
+              <a class="navbar-links" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/orders">
+                <i class="fa-solid fa-user-clock"></i>&nbsp;
+                <span>Orders</span>
+              </a>
+              <a class="navbar-links" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/cart">
+                <i class="fa-solid fa-cart-shopping"></i>&nbsp;
+                <span>Cart</span>
+              </a>
+              <a class="navbar-links" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/contact-us">
+                <i class="fa-solid fa-comment"></i>&nbsp;
+                <span>Contact Us</span>
+              </a>
+            }
+            @else {
+              <a class="navbar-links" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/admin/users">
+                <i class="fa-solid fa-users"></i>&nbsp;
+                <span>Users</span>
+              </a>
+              <a class="navbar-links" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/admin/food-menu">
+                <i class="fa-solid fa-utensils"></i>&nbsp;
+                <span>Menu</span>
+              </a>
+              <a class="navbar-links" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/admin/orders">
+                <i class="fa-solid fa-user-clock"></i>&nbsp;
+                <span>Orders</span>
+              </a>
+              <a class="navbar-links" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/admin/stocks">
+                <i class="fa-solid fa-layer-group"></i>&nbsp;
+                <span>Stocks</span>
+              </a>
+            }
+            @if (_authService.CurrentUserRole != '') {
+              <button class="btn btn-danger" (click)="onLogout()">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;
+                <span>Logout</span>
+              </button>
+            }
+        </div>
+      </div>
+    </div>
+  </nav>
+}
+
+@else if (_mainService.IsMobile) {
+  <nav class="custom-nav">
+    <div class="h-100 w-100 px-4">
+      <div class="h-100 w-100 d-flex align-items-center justify-content-between position-relative">
+        <div class="logo-wrapper">
+            <span class="logo-container">
+              <img [src]="logoUrl" routerLink="/home" class="logo" alt="logo">
+            </span>
+        </div>
+        <div class="d-flex align-items-center">
+          @if (!_authService.IsAdmin) {
+            <div class="dropdown">
+              <span class="navbar-links dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-utensils"></i>&nbsp;
+                <span>Menu</span>
+              </span>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li class="dropdown-item" ariaCurrentWhenActive="page" [queryParams]="{ type: 'R' }" routerLink="/menu">Retail Order</li>
+                <!-- <li class="dropdown-item" ariaCurrentWhenActive="page" [queryParams]="{ type: 'P' }" routerLink="/menu">Party Order</li> -->
+              </ul>
+            </div>
+            <div class="hamb-container" id="hamb-container" (click)="onMenuClick()">
+              <div class="hamb"></div>
+            </div>
+          }
+          @else {
+            <div class="hamb-container" id="hamb-container" (click)="onMenuClick()">
+              <div class="hamb"></div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sideMenuWrapper" id="side-menu-wrapper">
+    @if (!_authService.IsAdmin) {
+      <a class="sideMenuLinks" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/home">
+        <i class="fa-solid fa-house"></i>&nbsp;
+        <span>Home</span>
+      </a>
+      <a class="sideMenuLinks" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/orders">
+        <i class="fa-solid fa-user-clock"></i>&nbsp;
+        <span>Orders</span>
+      </a>
+      <a class="sideMenuLinks" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/cart">
+        <i class="fa-solid fa-cart-shopping"></i>&nbsp;
+        <span>Cart</span>
+      </a>
+      <a class="sideMenuLinks" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/contact-us">
+        <i class="fa-solid fa-comment"></i>&nbsp;
+        <span>Contact Us</span>
+      </a>
+    }
+    @else {
+      <a class="sideMenuLinks" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/admin/users">
+        <i class="fa-solid fa-users"></i>&nbsp;
+        <span>Users</span>
+      </a>
+      <a class="sideMenuLinks" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/admin/food-menu">
+        <i class="fa-solid fa-utensils"></i>&nbsp;
+        <span>Menu</span>
+      </a>
+      <a class="sideMenuLinks" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/admin/orders">
+        <i class="fa-solid fa-user-clock"></i>&nbsp;
+        <span>Orders</span>
+      </a>
+      <a class="sideMenuLinks" routerLinkActive="active" ariaCurrentWhenActive="page" routerLink="/admin/stocks">
+        <i class="fa-solid fa-layer-group"></i>&nbsp;
+        <span>Stocks</span>
+      </a>
+    }
+    <div class="sideMenuLinks">
+      @if (_authService.CurrentUserRole != '') {
+        <button class="btn btn-danger" (click)="onLogout()">
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>&nbsp;
+          <span>Logout</span>
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="backdrop" id="backdrop" (click)="onMenuClick()"></div>
+}

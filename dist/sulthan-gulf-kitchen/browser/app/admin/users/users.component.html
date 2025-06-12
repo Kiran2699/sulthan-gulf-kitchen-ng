@@ -1,0 +1,121 @@
+<main class="stocksDet commonContentHeight">
+    <div class="card my-3 stocksCard food-card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+          <span class="fs-6 fw-bolder text-muted">User List</span>
+          @if (ShowAddItemBtn) {
+            <button class="btn btn-outline-primary d-flex align-items-center" (click)="onAddItem()">
+                <i class="fa-solid fa-layer-group"></i>
+                <span class="d-inline-block ms-2 fw-bold">Add item</span>
+            </button>
+          }
+          @else {
+            <button class="btn btn-outline-secondary d-flex align-items-center" (click)="this.ShowAddItemBtn = true;PreviousData = null">
+                <i class="fa-solid fa-layer-group"></i>
+                <span class="d-inline-block ms-2 fw-bold">Cancel</span>
+            </button>
+          }
+        </div>
+        <div class="card-body">
+            @if (ShowAddItemBtn) {
+                <mat-tab-group>
+                    <mat-tab label="Customer List">
+                        <div class="overflow-auto mt-3">
+                            <table class="table table-bordered table-striped table-responsive table-hover admin-table">
+                                <thead>
+                                  <tr>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Password</th>
+                                    <th>Phone</th>
+                                    <th>Created By</th>
+                                    <th>Created Date</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  @for (item of CustomerList; track $index) {
+                                    <tr (click)="onSelectUser($index, 'C')">
+                                      <td>{{ item.name }}</td>
+                                      <td>{{ item.email }}</td>
+                                      <td>{{ item.password }}</td>
+                                      <td>{{ item.phone }}</td>
+                                      <td class="text-capitalize">{{ item.createdBy }}</td>
+                                      <td>{{ item.createdDate }}</td>
+                                    </tr>
+                                  }
+                                </tbody>
+                            </table>
+                        </div>
+                    </mat-tab>
+                    <mat-tab label="Admin List">
+                        <div class="overflow-auto mt-3">
+                            <table class="table table-bordered table-striped table-responsive table-hover admin-table">
+                                <thead>
+                                  <tr>
+                                    <th>Full Name</th>
+                                    <th>Email</th>
+                                    <th>Password</th>
+                                    <th>Phone</th>
+                                    <th>Created By</th>
+                                    <th>Created Date</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  @for (item of AdminList; track $index) {
+                                    <tr (click)="onSelectUser($index, 'A')">
+                                      <td>{{ item.name }}</td>
+                                      <td>{{ item.email }}</td>
+                                      <td>{{ item.password }}</td>
+                                      <td>{{ item.phone }}</td>
+                                      <td class="text-capitalize">{{ item.createdBy }}</td>
+                                      <td>{{ item.createdDate }}</td>
+                                    </tr>
+                                  }
+                                </tbody>
+                            </table>
+                        </div>
+                    </mat-tab>
+                </mat-tab-group>
+            }
+            @else {
+                <form [formGroup]="UserDetailForm" (submit)="onSubmit()">
+                    <span class="inputLabel">Full Name</span>
+                    <div class="input-group">
+                        <input type="text" formControlName="name" class="form-control" placeholder="Full Name">
+                    </div>
+                    <div class="mt-3">
+                        <span class="inputLabel">Email</span>
+                        <div class="input-group">
+                            <input type="text" formControlName="email" maxlength="50" class="form-control" placeholder="example@abc.com">
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <span class="inputLabel">Password</span>
+                        <div class="input-group">
+                            <input type="password" formControlName="password" class="form-control" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <span class="inputLabel">Phone</span>
+                        <div class="input-group">
+                            <input type="text" maxlength="12" formControlName="phone" class="form-control" placeholder="Phone Number">
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <span class="inputLabel">User Type</span>
+                        <select formControlName="usertype" class="form-select text-capitalize">
+                            <option *ngFor="let option of UserTypes" [value]="option.value">
+                                {{ option.name }}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center pt-3 border-top mt-3">
+                        @if (IsEditMode) {
+                            <button type="submit" class="btn btn-danger me-3" (click)="deleteRecord()">Delete</button>
+                        }
+                        <button type="submit" [ngClass]="{'disabled': !UserDetailForm.valid}" class="btn btn-secondary">{{ IsEditMode ? 'Update' : 'Submit'}}</button>
+                    </div>
+                </form>
+            }
+        </div>
+    </div>
+</main>

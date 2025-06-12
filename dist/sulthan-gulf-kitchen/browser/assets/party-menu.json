@@ -1,0 +1,143 @@
+{
+    "Arabic": [
+        {
+            "name": "4 sea bass biriyani",
+            "sizeVarient": [
+                {
+                    "price": "120",
+                    "image": "arabic/4-sea-bass-briyani.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "6 sea bass half salmon",
+            "sizeVarient": [
+                {
+                    "price": "180",
+                    "image": "arabic/6-sea-bass-half-salmon.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "1/4 lamb biriyani",
+            "sizeVarient": [
+                {
+                    "price": "120",
+                    "image": "arabic/quarter-lamb-briyani.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "Whole goat",
+            "sizeVarient": [
+                {
+                    "price": "260",
+                    "image": "arabic/whole-goat.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "Whole lamb biriyani",
+            "sizeVarient": [
+                {
+                    "price": "250",
+                    "image": "arabic/whole-lamb-briyani-sm.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "Whole lamb biriyani (XL)",
+            "sizeVarient": [
+                {
+                    "price": "300",
+                    "image": "arabic/whole-lamb-briyani-lg.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "Whole lamb non grilled",
+            "sizeVarient": [
+                {
+                    "price": "280",
+                    "image": "arabic/whole-lamb-non-grilled.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "Whole lamb white rice",
+            "sizeVarient": [
+                {
+                    "price": "300",
+                    "image": "arabic/whole-lamb-white-rice.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "1 arm lamb biriyani",
+            "sizeVarient": [
+                {
+                    "price": "49.99",
+                    "image": "arabic/1-arm-lamb-briyani.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        }
+    ],
+    "Indian": [
+        {
+            "name": "whole lamb biriyani",
+            "sizeVarient": [
+                {
+                    "price": "170",
+                    "image": "indian/whole-lamb-briyani.svg",
+                    "description": "",
+                    "serves": "1"
+                },
+                {
+                    "price": "300",
+                    "image": "indian/whole-lamb-briyani.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        },
+        {
+            "name": "whole lamb mandi",
+            "sizeVarient": [
+                {
+                    "price": "170",
+                    "image": "indian/whole-lamb-mandi.svg",
+                    "description": "",
+                    "serves": "1"
+                },
+                {
+                    "price": "300",
+                    "image": "indian/whole-lamb-mandi.svg",
+                    "description": "",
+                    "serves": "1"
+                }
+            ]
+        }
+    ],
+    "Mandi": [],
+    "Biriyani": [],
+    "Curry": [],
+    "Addons": []
+}

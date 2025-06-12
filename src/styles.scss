@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    --banner-url: url('https://firebasestorage.googleapis.com/v0/b/testing-app-480e1.firebasestorage.app/o/app-images%2Fbanner.jpg?alt=media');
+    --site-active-color: #dc981b;
+    font-size: 13px;
+
+    @media (max-width: 600px) {
+        font-size: 12px;
+    }
+}
+
+body {
+    color: #2b2b2b;
+    font-size: 13px;
+    margin-top: 70px!important;
+    height: calc(100% - 70px)!important;
+}
+
+.btn-app-primary {
+    background-color: var(--site-active-color)!important;
+    color: #fff!important;
+    font-weight: 600;
+    letter-spacing: .8px;
+}
+
+.btnPrimary {
+    background-color: var(--site-active-color);
+    color: #fff;
+}
+
+th {
+    text-align: center;
+}
+
+.backdrop {
+    position: fixed;
+    inset: 0;
+    background-color: #000000c4;
+    z-index: 1;
+    display: none;
+
+    &.open {
+        display: block;
+    }
+}
+
+.reversBodyMargin {
+   margin-top: -70px;
+   min-height: calc(100vh - 70px);
+}
+
+.commonContentHeight {
+    min-height: calc(100vh - 144px);
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

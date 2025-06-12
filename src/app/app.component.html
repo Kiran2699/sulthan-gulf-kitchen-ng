@@ -1,0 +1,19 @@
+<div>
+    <router-outlet />
+</div>
+
+<app-navbar *ngIf="!mainService.HideNavbar"></app-navbar>
+<app-footer></app-footer>
+@if (mainService.IsLoading) {
+    <div class="loader-spinner">
+        <mat-progress-spinner
+            class="example-margin"
+            mode="indeterminate"
+            value="50">
+        </mat-progress-spinner>
+    </div>
+}
+
+@if (mainService.AlertText != '') {
+    <div id="app-alert" class="app-main-alert" [innerHTML]="mainService.AlertText"></div>
+}

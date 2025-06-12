@@ -1,0 +1,127 @@
+<div class="cart-container">
+    @for (item of OrderData.order; track $index) {
+        <div class="cart-item position-relative d-flex justify-content-between align-items-center p-3 border-bottom">
+            <div class="item-details d-flex align-items-center">
+                <img [src]="item.image" class="cart-item-image" alt="cart-item-image">
+                <div class="d-flex flex-column ms-3">
+                    <span class="inputLabel mb-2">{{ item.name }}</span>
+                    <span class="inputLabel">{{ item.quantity }}</span>
+                </div>
+            </div>
+            <div class="item-price d-flex align-items-center">
+                <span class="inputLabel me-3">{{item.price}}</span>
+            </div>
+        </div>
+    }
+    <div class="cart-item position-relative d-flex justify-content-end align-items-center p-3 border-bottom">
+        <span class="inputLabel">Delivery: </span> &nbsp; &nbsp;
+        <span class="inputLabel text-danger">{{ deliveryFee }}</span>
+    </div>
+    <div class="cart-item position-relative d-flex justify-content-end align-items-center p-3 border-bottom">
+        <span class="inputLabel">Total: </span> &nbsp; &nbsp;
+        <span class="inputLabel text-danger">{{ OrderData.totalPrice }}</span>
+    </div>
+    <form [formGroup]="OrderFG">
+        <div class="cart-item position-relative border-bottom p-3">
+            <mat-label class="inputLabel mb-2">Delivery Option:</mat-label>
+            <span class="inputLabel text-muted">{{ OrderData.deliveryOption === 'D' ? 'Delivery' : 'Pickup' }}</span>
+        </div>
+        <div class="cart-item position-relative border-bottom p-3">
+            <mat-label class="inputLabel mb-2">Payment Option:</mat-label>
+            <span class="inputLabel text-muted text-uppercase">{{ OrderData.paymentMethod }}</span>
+        </div>
+        <div class="cart-item position-relative p-3 border-bottom">
+            <span class="inputLabel mb-2">House Number:</span>
+            <span class="inputLabel text-muted">{{ OrderData.houseNo }}</span>
+        </div>
+        <div class="cart-item position-relative p-3 border-bottom">
+            <mat-label class="inputLabel mb-2">Location:</mat-label>
+            <span class="inputLabel text-muted">{{ OrderData.location }}</span>
+        </div>
+        <div class="cart-item position-relative p-3 border-bottom">
+            <span class="inputLabel mb-2">Postcode:</span>
+                <span class="inputLabel text-muted">{{ OrderData.postcode }}</span>
+        </div>
+        @if (_authService.CurrentUserRole != 'A') {
+            <div class="cart-item position-relative p-3 border-bottom">
+                <span class="inputLabel mb-2">Status:</span>
+                <span class="inputLabel text-muted">{{ OrderData.status }}</span>
+            </div>
+            <div class="cart-item position-relative p-3 border-bottom">
+                <span class="inputLabel mb-2">Comments:</span>
+                <span class="inputLabel text-muted">{{ OrderData.comments }}</span>
+            </div>
+            <div class="cart-item position-relative p-3 border-bottom">
+                <span class="inputLabel mb-2">Estimated Delivery Time:</span>
+                <span class="inputLabel text-muted">{{ OrderData.estimatedDelivery }}</span>
+            </div>
+            @if (OrderData.actualDelivery) {
+                <div class="cart-item position-relative p-3 border-bottom">
+                    <span class="inputLabel mb-2">Actual Delivery Time:</span>
+                    <span class="inputLabel text-muted">{{ OrderData.actualDelivery }}</span>
+                </div>
+            }
+        }
+        @else {
+            <div class="cart-item position-relative border-bottom p-3">
+                <mat-label class="inputLabel mb-2">Status</mat-label>
+                <select formControlName="status" class="form-select text-capitalize">
+                    <option *ngFor="let option of _orderService.orderStatusOption" [value]="option.name">
+                        {{ option.name }}
+                    </option>
+                </select>
+            </div>
+            <div class="cart-item position-relative p-3 border-bottom">
+                <span class="inputLabel mb-2">Delivered By</span>
+                <div class="">
+                    <input type="text" formControlName="deliveredBy" class="form-control" placeholder="... Employee Name">
+                </div>
+            </div>
+            <div class="cart-item position-relative p-3 border-bottom">
+                <span class="inputLabel mb-2">Handled By</span>
+                <div class="">
+                    <input type="text" formControlName="orderHandledBy" class="form-control" placeholder="... Employee Name">
+                </div>
+            </div>
+            <div class="cart-item position-relative border-bottom p-3">
+                <mat-label class="inputLabel mb-2">Estimated Delivery Time</mat-label>
+                <div class="d-flex align-items-center">
+                    <select formControlName="estimatedDelHr" class="form-select time-select me-3 text-capitalize">
+                        <option *ngFor="let option of hourArr" [value]="option">
+                            {{ option }}
+                        </option>
+                    </select>
+                    <select formControlName="estimatedDelMin" class="form-select time-select text-capitalize">
+                        <option *ngFor="let option of minArr" [value]="option">
+                            {{ option }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="cart-item position-relative border-bottom p-3">
+                <mat-label class="inputLabel mb-2">Actual Delivery Time</mat-label>
+                <div class="d-flex align-items-center">
+                    <select formControlName="actualDelHr" class="form-select time-select me-3 text-capitalize">
+                        <option *ngFor="let option of hourArr" [value]="option">
+                            {{ option }}
+                        </option>
+                    </select>
+                    <select formControlName="actualDelMin" class="form-select time-select text-capitalize">
+                        <option *ngFor="let option of minArr" [value]="option">
+                            {{ option }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="cart-item position-relative p-3 border-bottom">
+                <span class="inputLabel mb-2">Comments</span>
+                <div class="">
+                    <input type="text" formControlName="comments" class="form-control" placeholder="Comments">
+                </div>
+            </div>
+            <div class="cart-item position-relative d-flex justify-content-end align-items-center p-3">
+                <button class="btn btn-app-primary" (click)="onSubmit()">Update Order</button>
+            </div>
+        }
+    </form>
+  </div>
