@@ -180,3 +180,17 @@ mat-form-field {
     width: 350px;
     max-width: 100%;
 }
+
+.modalIconWrapper {
+    font-size: 1rem;
+    color: var(--site-active-color);
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 10px;
+    background-color: #fafafa;
+    border-radius: 8px;
+}
+
+.modalIcon {
+    font-size: 1.3rem;
+}

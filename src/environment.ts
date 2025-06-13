@@ -16,6 +16,7 @@ export const environment = {
   ordersColl: 'orders',
   deliveryFee: '2.50',
   clientPhone: '+447901388979',
+  clientEmail: 'sulthangulfkitchen@gmail.com',
   sessionTimeout: 1, // 1 hour
   instaUrl: 'https://www.instagram.com/sulthan_gulf_kitchen?igsh=MTdmM3dkZDdzemVnaA==',
   fbUrl: 'https://www.facebook.com/share/1DHmRh9VeN/?mibextid=wwXIfr',

@@ -11,6 +11,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from '@angular/forms';
 import { switchMap } from 'rxjs';
+import { environment } from '../../environment';
 declare var $: any;
 
 @Component({
@@ -51,6 +52,8 @@ export class FoodMenusComponent implements OnInit {
   AddMenuList: any[] = [];
   disableAddPrev = true;
   disableAddNext = false;
+  clientPhone = environment.clientPhone;
+  clientEmail = environment.clientEmail
 
   constructor() {
     this.activatedRoute.queryParams.subscribe(params => {
@@ -126,6 +129,9 @@ export class FoodMenusComponent implements OnInit {
       this.SelectedSize = item.sizevar.length === 3 ? 'Q' : 'H';
       $('#selectedItemModel').modal('show');
     }
+    else {
+      $('#partyInfoModal').modal('show');
+    }
   }
 
   selectSize(size: string, index: number) {
@@ -133,6 +139,10 @@ export class FoodMenusComponent implements OnInit {
     if (this.SelectedItem) {
       this.SelectedSizeItemToDisplay = this.SelectedItem.sizevar[index];
     }
+  }
+
+  closeModal() {
+    $('#partyInfoModal').modal('hide');
   }
 
   cancelItem() {

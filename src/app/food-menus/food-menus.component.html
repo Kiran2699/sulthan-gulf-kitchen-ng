@@ -2,7 +2,7 @@
     @if (MenuType == 'P') {
         <span class="menu-header">Party Order</span>
         <div class="alert alert-info" role="alert">
-            We are not accepting online party orders at the moment; however, you can still contact the kitchen for party order information..
+            We are not accepting online party orders at the moment. You're welcome to contact the kitchen directly to share your party order details based on our menu selection.
         </div>
         <mat-tab-group>
             <mat-tab label="Arabic">
@@ -215,3 +215,35 @@
         </div>
     </div>
 }
+
+<div class="modal fade" id="partyInfoModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Party Order Information</h5>
+          <button type="button" class="btn-close" (click)="closeModal()"></button>
+        </div>
+        <div class="modal-body">
+            <div>
+                We are not accepting online party orders at the moment. 
+                You're welcome to contact the kitchen directly to share your party order details based on our menu selection.
+            </div>
+            <div class="mt-3 d-flex align-items-center modalIconWrapper">
+                <div class="d-flex flex-column justify-content-center align-items-center">
+                    <i class="fa-solid modalIcon fa-phone"></i>
+                    <span class="mt-1">----</span>
+                    <i class="fa-brands modalIcon fa-square-whatsapp mt-1"></i>
+                </div>
+                <span class="ms-2">{{ clientPhone }}</span>
+            </div>
+            <div class="mt-3 d-flex align-items-center modalIconWrapper">
+                <i class="fa-solid modalIcon fa-envelope"></i>
+                <span class="ms-2">{{ clientEmail }}</span>
+            </div>
+            </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" (click)="closeModal()">Ok</button>
+        </div>
+      </div>
+    </div>
+</div>
